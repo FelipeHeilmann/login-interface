@@ -3,6 +3,11 @@ import * as jwt from '../middleware/authMiddleware.js'
 import bcrypt from 'bcrypt' 
 
 class UserController{
+    static getUsers = async(req,res)=>{
+        const users = await Users.find({}, ["-password", "-_id"])
+        res.status(200).json({users})
+    }
+    
     static getUserEmail = async(email)=>{
         return await Users.findOne({email: email})
     }
@@ -50,10 +55,8 @@ class UserController{
             return res.status(422).json({message: "password incorrect!"})
         }
         try{
-            const secret = process.env.SECRET
-            const token = jwt.sign({id: user._id,})
-            res.cookie('token',token, {httpOnly: true })
-            return res.status(201).json({message: "user authenticated"})
+            const token = jwt.sign({user: user._id,})
+            return res.status(201).json({message: "user authenticated", token})
         }
         catch(err){
             return res.status(401).json({message: err.message})

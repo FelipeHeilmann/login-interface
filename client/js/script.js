@@ -1,4 +1,3 @@
-
 const buttons = document.querySelectorAll('.btn')
 const formSignup = document.querySelector('.signup-form')
 const formLogin = document.querySelector('.login-form')
@@ -6,6 +5,7 @@ const signupInputs = formSignup.querySelectorAll('input')
 const loginInputs = formLogin.querySelectorAll('input')
 const errorMessageLogin = document.querySelector('.error-message-login')
 const errorMessageSignUp = document.querySelector('.error-message-sigup')
+
 
 
 buttons.forEach(button => {
@@ -70,9 +70,15 @@ formLogin.addEventListener('submit',(e)=>{
         headers:{
             'Authorization': `Basic ${base64Credentials}`
         }
+        ,credentials: "include"
+    }).then(res=>{
+        console.log(res.data.token)
+        document.cookie = `token=${res.data.token};max-age=86400;`
+        window.location.href = 'user.html'
     })
-    console.log('Basic ' + base64Credentials)
+})
 
-    })
+
+
 
 
