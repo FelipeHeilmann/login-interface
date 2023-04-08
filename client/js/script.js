@@ -1,3 +1,4 @@
+
 const buttons = document.querySelectorAll('.btn')
 const formSignup = document.querySelector('.signup-form')
 const formLogin = document.querySelector('.login-form')
@@ -44,16 +45,10 @@ formSignup.addEventListener('submit', (e)=>{
     const formDataSingup = new FormData(formSignup)//objeto que pega os dados do form 
     const data = Object.fromEntries(formDataSingup)//converte os dados em um objeto javascript
 
-    fetch('http://localhost:3000/auth/register', {
-        method: 'post',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-    }).then((res)=>{
-        console.log(res)
-    }).catch(error=>{
-        console.log(error)
-    })
-    signupInputs.values = ''
+   axios.post('http://localhost:3000/register',data)
+        .then((res)=>{
+            console.log(res)
+        })
 })
 
 formLogin.addEventListener('submit',(e)=>{
@@ -68,15 +63,16 @@ formLogin.addEventListener('submit',(e)=>{
 
     const formDataLogin = new FormData(formLogin)//objeto que pega os dados do form 
     const data = Object.fromEntries(formDataLogin)//converte os dados em um objeto javascript
-    fetch('http://localhost:3000/auth/login', {
-        method: 'post',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-    }).then(res=>{
-        
-    })
-
+    const {email, password} = data
     
-})
+    const base64Credentials = btoa(email + ':' + password);
+    axios.post('http://localhost:3000/auth',{}, {
+        headers:{
+            'Authorization': `Basic ${base64Credentials}`
+        }
+    })
+    console.log('Basic ' + base64Credentials)
+
+    })
 
 

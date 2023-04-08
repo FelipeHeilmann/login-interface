@@ -27,7 +27,7 @@ class UserController{
 
         try{   
             const newUser = await user.save()
-            return res.status(200).json(newUser)
+            return res.status(200).json({message: "registered user"})
         }
         catch(err){
             return res.status(500).json({message: err.message})
