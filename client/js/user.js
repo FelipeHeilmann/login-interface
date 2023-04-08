@@ -7,12 +7,6 @@ const token = document.cookie.split('=')[1]
             'Authorization': `Bearer ${token}`
         }
     }).then(res=>{
-        if(res.status !== 200){
-            var c = document.cookie.split("; ")
-            for (i in c) 
-            document.cookie =/^[^=]+/.exec(c[i])[0]+"=;expires=Thu, 01 Jan 1970 00:00:00 GMT" 
-            window.location.href = 'index.html'
-        }
         title.innerText+= " " + res.data.userName
         const users = res.data.users
         for(let i =0; i < users.length; i++){
@@ -25,6 +19,11 @@ const token = document.cookie.split('=')[1]
             tr.appendChild(td2)
             table.append(tr)
         }        
+    }).catch(error=>{
+        let date = new Date(2010,0,01);
+        data = date.toGMTString();
+        document.cookie = 'token=; expires=' + date + '; path=/client';
+        window.location.href='index.html'
 })
 
 logout.addEventListener('click', ()=>{
