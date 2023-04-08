@@ -19,7 +19,7 @@ class UserController{
 
         const existUser = await UserController.getUserEmail(email)
         if(existUser){
-            return res.status(422).json({message: "this email has already been used"})
+            return res.status(422).json({message: "This email has already been used"})
         }
 
         const salt = await bcrypt.genSalt(12)
@@ -34,7 +34,7 @@ class UserController{
 
         try{   
             const newUser = await user.save()
-            return res.status(200).json({message: "registered user"})
+            return res.status(200).json({message: "Registered user"})
         }
         catch(err){
             return res.status(500).json({message: err.message})
@@ -54,11 +54,11 @@ class UserController{
 
         const checkPass = await bcrypt.compare(password, user.password)
         if(!checkPass){
-            return res.status(422).json({message: "password incorrect!"})
+            return res.status(422).json({message: "Password incorrect!"})
         }
         try{
             const token = jwt.sign({user: user._id,})
-            return res.status(201).json({message: "user authenticated", token})
+            return res.status(201).json({message: "User authenticated", token})
         }
         catch(err){
             return res.status(401).json({message: err.message})

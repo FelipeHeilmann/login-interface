@@ -4,7 +4,7 @@ const formLogin = document.querySelector('.login-form')
 const signupInputs = formSignup.querySelectorAll('input')
 const loginInputs = formLogin.querySelectorAll('input')
 const errorMessageLogin = document.querySelector('.error-message-login')
-const errorMessageSignUp = document.querySelector('.error-message-sigup')
+const errorMessageSignUp = document.querySelector('.error-message-singup')
 document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
 
 
@@ -34,7 +34,9 @@ window.addEventListener("load", (event) => {
 
 formSignup.addEventListener('submit', (e)=>{
     e.preventDefault()
+    errorMessageSignUp.style.display = 'none'
     signupInputs.forEach(input=>{
+        input.classList.remove('wrong-input')
         if(input.value.length == 0){
             input.classList.add('wrong-input')
             errorMessageSignUp.style.display = 'block'
@@ -48,16 +50,23 @@ formSignup.addEventListener('submit', (e)=>{
    axios.post('http://localhost:3000/register',data)
         .then((res)=>{
             console.log(res)
+        }).catch(error=>{
+            const errorMessage = error.response.data.message
+            errorMessageSignUp.style.display='block'
+            errorMessageSignUp.innerText = errorMessage
         })
 })
 
 formLogin.addEventListener('submit',(e)=>{
     e.preventDefault()
+    errorMessageLogin.style.display='none'
+    
     loginInputs.forEach(input=>{
+        input.classList.remove('wrong-input')
         if(input.value.length == 0){
             input.classList.add('wrong-input')
-            errorMessage.style.display = 'block'
-            errorMessage.innerHTML = 'the fields cant be empty'
+            errorMessageLogin.style.display = 'block'
+            errorMessageLogin.innerHTML = 'the fields cant be empty'
         }
     })
 
@@ -75,9 +84,12 @@ formLogin.addEventListener('submit',(e)=>{
         console.log(res.data.token)
         document.cookie = `token=${res.data.token};max-age=86400;`
         window.location.href = 'user.html'
+    }).catch(error=>{
+        const errorMessage = error.response.data.message
+        errorMessageLogin.style.display='block'
+        errorMessageLogin.innerText = errorMessage
     })
 })
-
 
 
 
