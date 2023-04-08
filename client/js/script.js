@@ -5,7 +5,7 @@ const signupInputs = formSignup.querySelectorAll('input')
 const loginInputs = formLogin.querySelectorAll('input')
 const errorMessageLogin = document.querySelector('.error-message-login')
 const errorMessageSignUp = document.querySelector('.error-message-sigup')
-
+document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
 
 
 buttons.forEach(button => {

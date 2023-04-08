@@ -4,8 +4,10 @@ import bcrypt from 'bcrypt'
 
 class UserController{
     static getUsers = async(req,res)=>{
+        const {first_name, last_name} = req.auth
+        const userName = `${first_name} ${last_name}`
         const users = await Users.find({}, ["-password", "-_id"])
-        res.status(200).json({users})
+        res.status(200).json({users, userName})
     }
     
     static getUserEmail = async(email)=>{
@@ -62,7 +64,6 @@ class UserController{
             return res.status(401).json({message: err.message})
         }
     }
-
 }
 
 export default UserController

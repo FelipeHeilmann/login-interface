@@ -126,3 +126,31 @@ form > span > a{
     
 }
 
+/*user page*/
+
+table{
+    width: 80%;
+    height: 100px;
+    background-color: #fff;
+    margin: 10px 0;
+}
+
+th,td{
+    padding: 5px;
+}
+
+h2{
+    margin: 10px 0;
+}
+
+.logout-btn{
+    width: 100px;
+    height: 30px;
+    font-size: 16px;
+    background-color: rgb(255,0,0);
+}
+
+.logout-btn:hover{
+    background-color: rgb(182, 0, 0);
+}
+
