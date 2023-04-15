@@ -2,7 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import db from './connection/dbConnection.js'
 import cookieParser from 'cookie-parser'
-import routes from './routes/index.js'
+import routes from './app/routes/index.js'
 
 const app = express()
 app.use(
