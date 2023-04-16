@@ -4,11 +4,6 @@
     box-sizing: border-box;
 }
 
-body{
-    
-    font-family: 'Titillium Web', sans-serif;
-}
-
 .button-container{
     width: 100%;
     display: flex;
@@ -43,11 +38,6 @@ form{
 .form-active{
     animation: ease 3s;
     display: block;
-}
-
-
-.wrong-input{
-    border: 2px solid var(--color-worning);
 }
 
 .error-message-login, .error-message-singup{
