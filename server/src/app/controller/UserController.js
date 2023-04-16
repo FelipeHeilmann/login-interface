@@ -46,7 +46,7 @@ class UserController{
         const [email, password] = Buffer.from(hash, 'base64').toString().split(':')
         
 
-        const user= await UserController.getUserEmail(email)
+        const user= await Users.findOne({email:email}).select('+password')
         if(!user){
             return res.status(422).json({message: "User was not found"})
         }
