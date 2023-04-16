@@ -83,3 +83,9 @@ h2{
     max-width:600px;
     margin:40px auto;
 }
+
+
+.input-row{
+    width: 100%;
+    margin-bottom: 40px;
+} 
