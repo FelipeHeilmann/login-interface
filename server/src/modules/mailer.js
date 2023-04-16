@@ -14,10 +14,12 @@ const transport = nodemailer.createTransport({
 
 //configuracao de template de email com nodemailer
 transport.use('compile', hbs({
-    viewEngine: 'handlebars',
-    viewPath: path('./src/resources/mail/'),
-    extName: ".html",
+  viewEngine: {
+    defaultLayout: undefined,
+    partialsDir: path.resolve('./src/resources/mail/')
+  },
+  viewPath: path.resolve('./src/resources/mail/'),
+  extName: '.html',
+}));
 
-  }))
-
-module.exports = transport
+export default transport
