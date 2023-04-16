@@ -1,0 +1,11 @@
+
+.logout-btn{
+    width: 100px;
+    height: 30px;
+    font-size: 16px;
+    background-color: var(--color-worning);
+}
+
+.logout-btn:hover{
+    background-color: var(--color-worning-dark);
+}

@@ -1,0 +1,85 @@
+:root{
+    --color-negative: rgb(0,0,0);
+    --color-zero: rgb(255,255,255);
+
+    --color-first: rgb(27, 177, 137);
+    --color-second: rgb(12, 121, 92);
+    --color-third: rgb(26, 177, 136, 0.5);
+    --color-fourth: rgb(19, 35, 47, 0.9);
+
+    --color-gray-first:rgb(160, 179, 176);
+    --color-gray-second: rgba(160, 179, 176, 0.25);
+
+    --color-worning : rgb(255,0,0);
+    --color-worning-dark:rgb(182, 0, 0);
+    
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+body{
+    background-color: #c1bdba;
+}
+
+input{
+    width: 100%;
+    height: 40px;
+    padding: 15px;
+    background:none;
+    color:white;
+    font-size: 22px;
+    outline:0;
+    border: 1px solid #1ab188;
+}
+
+button{
+    width: 100%;
+    height: 60px;
+    font-size: 2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    background: #1ab188;
+    color: #ffffff;
+    border:0;
+    cursor: pointer;
+    transition:.5s ease;
+}
+
+button:hover{
+    background-color: #0c795c;
+}
+
+table{
+    width: 80%;
+    height: 100px;
+    background-color: #fff;
+    margin: 10px 0;
+}
+
+th,td{
+    padding: 5px;
+}
+
+h2{
+    margin: 10px 0;
+}
+
+.form-container h1{
+    color: var(--color-zero);
+    text-align: center;
+    margin: 20px 0;
+    font-weight: lighter;
+}
+
+.form-container{
+    background-color: var(--color-fourth);
+    padding: 30px;
+    max-width:600px;
+    margin:40px auto;
+}

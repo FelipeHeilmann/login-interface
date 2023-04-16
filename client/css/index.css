@@ -1,0 +1,88 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.button-container{
+    width: 100%;
+    display: flex;
+}
+
+.btn{
+    width: 50%;
+    border-radius: 0;
+    border: 0;
+    height: 50px;
+    cursor: pointer;
+    color: var(--color-gray-first);
+    font-size: 20px;
+    background-color: var(--color-gray-second);
+    transition:.5s ease;
+}
+
+.btn:hover{
+    background-color: var(--color-third);
+}
+
+.active{
+    background-color: var(--color-first);
+    color: var(--color-zero);
+}
+
+form{
+    text-align: center;
+    display: none;
+}
+
+.form-active{
+    animation: ease 3s;
+    display: block;
+}
+
+
+.input-row{
+    width: 100%;
+    margin-bottom: 40px;
+}   
+
+
+
+.wrong-input{
+    border: 2px solid var(--color-worning);
+}
+
+.error-message-login, .error-message-singup{
+    display: none;
+    font-size: 25px;
+    color: var(--color-worning);
+    margin-bottom: 10px;
+}
+
+
+.input-50{
+    display: flex;
+    justify-content: space-between;
+}
+
+.input-50 > input{
+    width: 49%;
+}
+
+form > span{
+    display: flex;
+    flex-direction: row-reverse;
+    margin-bottom: 20px;
+}
+
+form > span > a{
+    text-decoration: none;
+    color: var(--color-first);
+}
+
+
